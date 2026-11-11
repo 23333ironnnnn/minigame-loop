@@ -69,10 +69,6 @@ A real case: [how Kacha Bear V5 ran the loop](examples/kacha-bear.en.md).
 
 - If you want full autonomy, with the AI changing your live game every day on its own: here every step stops for a human OK.
 
-## Credits
-
-The method is borrowed from an article by Chen Ji and Cheng Yu (Taotian Group, Business Technology – Marketing & Transaction Technology), [AI 自迭代的小游戏 Agent：2周上线6款小游戏，3天迭代12款小游戏](https://mp.weixin.qq.com/s/jWpz6woP95eowKaFYVUSpg) ("A self-iterating mini-game agent: 6 games launched in 2 weeks, 12 iterated in 3 days"): research with pictures, plans with expected outcomes, four kinds of memory, fixed / variable layers, a level factory, collecting experiment results when due. They built a full multi-agent platform; this repo keeps only the method, as a skill that one person plus one AI assistant can use.
-
 ## Contributing
 
 - Changes to the skill need evidence: which project, which version, which card's settlement made you think it should change. Just an idea? Open an issue first.
