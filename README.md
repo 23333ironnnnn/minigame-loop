@@ -38,7 +38,7 @@ cp -R minigame-loop/skills/zh/minigame-loop .claude/skills/   # 中文版
 # 英文版换成 minigame-loop/skills/en/minigame-loop
 ```
 
-Claude Code 和 Cursor 都用的话，放一份在 `.claude/skills/` 就够，Cursor 也读这里。助手没有 skill 机制的：把 `SKILL.md` 正文贴进项目的 `AGENTS.md`，其余四个文件放在旁边。
+Claude Code 和 Cursor 都用的话，放一份在 `.claude/skills/` 就够，Cursor 也读这里。助手没有 skill 机制的：把 `SKILL.md` 正文贴进项目的 `AGENTS.md`，其余文件放在旁边。
 
 ## 第一次用
 
@@ -48,15 +48,18 @@ Claude Code 和 Cursor 都用的话，放一份在 `.claude/skills/` 就够，Cu
 - `bets.md`：下注账本
 - `memory.md`：经验
 
-以后每版的 PRD 放在 `docs/loop/versions/`。这些文件属于你的项目，升级 skill 不会碰它们。
+以后每版的 PRD 放在 `docs/loop/versions/`。这些文件属于你的项目，升级 skill 不会碰它们。项目里一个埋点都没有的，它会先建议照 `analytics.md` 接 4 个事件。
 
 ## 里面有什么
 
 | 文件 | 讲什么 |
 | --- | --- |
 | `SKILL.md` | 一圈九步；开新版本、问「要不要做」、问「效果怎么样」时各怎么走；门禁 |
-| `bets.md` | 什么时候下注、下注卡、怎么结算才不自己骗自己 |
+| `bets.md` | 什么时候下注、下注卡、怎么判中没中、每组要多少人才看得出 |
+| `settle.js` | 结算算法：给前后两组数和预计区间，判中 / 没中 / 看不出（只要 Node） |
 | `memory.md` | 经验怎么记：作用域、证据等级、候选 → 生效 → 失效 |
+| `analytics.md` | 一个埋点都没有时先接的 4 个事件，以及怎么算次日留存、分享闭环、做完率 |
+| `platforms.md` | 各平台包体上限和能力的速查，每条带官方链接和核对日期 |
 | `new-game.md` | 开新游戏：立项卡、spike、固化层 / 可变层、关卡工厂、资产 |
 | `prd-template.md` | 每版 PRD 的骨架 |
 
@@ -65,7 +68,6 @@ Claude Code 和 Cursor 都用的话，放一份在 `.claude/skills/` 就够，Cu
 ## 不适合
 
 - 想全自动、每天自己改线上游戏的：这里每一步都停下来等人点头。
-- 一个数都拿不到的项目：下注没法结算，能用上的只剩「一步一验收」和 PRD 模板。
 
 ## 来源
 
@@ -75,6 +77,7 @@ Claude Code 和 Cursor 都用的话，放一份在 `.claude/skills/` 就够，Cu
 
 - 改 skill 要附证据：在哪个项目、哪一版、哪张卡的结算让你觉得该改。只是想法的话，先开 issue 聊。
 - 中英两份一起改。只会一种语言也行，PR 里说一声，另一份我们补。
+- 改完跑一遍回归自测：`node evals/settle.test.mjs`，再把 [`evals/scenarios.md`](evals/scenarios.md) 里的对话过一遍。
 - 欢迎把你的项目写成 `examples/<名字>.md`：北极星怎么定的、一张真卡、几条真经验。不放密钥、用户数据和平台没公开的资料。
 
 ## 许可

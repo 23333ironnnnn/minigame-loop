@@ -41,4 +41,4 @@
 - （空）
 ```
 
-真实条目长什么样：<https://github.com/23333ironnnnn/minigame-loop/blob/main/examples/kacha-bear.md>
+真实条目长什么样：minigame-loop 仓库里的 `examples/kacha-bear.md`。

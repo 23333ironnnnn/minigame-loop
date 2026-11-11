@@ -38,7 +38,7 @@ cp -R minigame-loop/skills/en/minigame-loop .claude/skills/   # English
 # for Chinese use minigame-loop/skills/zh/minigame-loop
 ```
 
-If you use both Claude Code and Cursor, one copy in `.claude/skills/` is enough; Cursor reads it too. For assistants without skills, paste the body of `SKILL.md` into the project's `AGENTS.md` and keep the other four files next to it.
+If you use both Claude Code and Cursor, one copy in `.claude/skills/` is enough; Cursor reads it too. For assistants without skills, paste the body of `SKILL.md` into the project's `AGENTS.md` and keep the other files next to it.
 
 ## First use
 
@@ -48,15 +48,18 @@ In your project, tell the assistant "start a new version" or "set up minigame-lo
 - `bets.md`: the bet ledger
 - `memory.md`: lessons
 
-Each version's PRD goes into `docs/loop/versions/`. These files belong to your project; upgrading the skill never touches them.
+Each version's PRD goes into `docs/loop/versions/`. These files belong to your project; upgrading the skill never touches them. If the project has no analytics at all, it will first suggest adding the 4 events in `analytics.md`.
 
 ## What's inside
 
 | File | What it covers |
 | --- | --- |
 | `SKILL.md` | The nine steps; what to do on "new version", "should we build X" and "how did it do"; the done-gate |
-| `bets.md` | When to bet, the bet card, how to settle without fooling yourself |
+| `bets.md` | When to bet, the bet card, how to judge hit or miss, how many people you need to tell |
+| `settle.js` | The settlement math: before/after counts and the expected range in, hit / miss / can't tell out (just Node) |
 | `memory.md` | How lessons are recorded: scope, evidence level, candidate → active → retired |
+| `analytics.md` | The 4 events to add when you have no analytics, and how to compute day-1 retention, the share loop and completion rate |
+| `platforms.md` | A cheat sheet of platform size limits and capabilities, each with an official link and check date |
 | `new-game.md` | Starting a new game: kickoff card, spike, fixed / variable layers, level factory, assets |
 | `prd-template.md` | The skeleton of every version's PRD |
 
@@ -65,7 +68,6 @@ A real case: [how Kacha Bear V5 ran the loop](examples/kacha-bear.en.md).
 ## Not a fit
 
 - If you want full autonomy, with the AI changing your live game every day on its own: here every step stops for a human OK.
-- Projects with no numbers at all: bets can't be settled, leaving only "one step, one sign-off" and the PRD template.
 
 ## Credits
 
@@ -75,6 +77,7 @@ The method is borrowed from an article by Chen Ji and Cheng Yu (Taotian Group, B
 
 - Changes to the skill need evidence: which project, which version, which card's settlement made you think it should change. Just an idea? Open an issue first.
 - Change both languages together. If you only write one, say so in the PR and we'll do the other.
+- After a change, run the regression checks: `node evals/settle.test.mjs`, then go through the conversations in [`evals/scenarios.md`](evals/scenarios.md).
 - You're welcome to write your project up as `examples/<name>.md`: how you set the north star, one real card, a few real lessons. No secrets, user data or non-public platform material.
 
 ## License

@@ -41,4 +41,4 @@ Rules: minigame-loop's memory.md.
 - (none)
 ```
 
-What real entries look like: <https://github.com/23333ironnnnn/minigame-loop/blob/main/examples/kacha-bear.en.md>
+What real entries look like: `examples/kacha-bear.en.md` in the minigame-loop repo.

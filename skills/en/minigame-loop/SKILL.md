@@ -11,7 +11,7 @@ description: >-
   "settle", "how are the numbers", or "remember this lesson".
 license: MIT
 metadata:
-  version: "0.1.0"
+  version: "0.2.0"
 ---
 
 # Mini-game iteration: how one loop goes
@@ -36,8 +36,8 @@ The skill holds the method only. Each project keeps its own state in its own rep
 1. Read the repo first: how it builds, which platforms it ships to, whether there's analytics / a dashboard, existing PRDs and release scripts.
 2. Ask four things in one go (don't ask what the repo already tells you; phrase it as "I see X, right?"):
    - North star: at most two numbers, e.g. day-1 retention, new users brought back by shares. Every bet's primary metric is picked from these.
-   - Where the data is: own dashboard / platform console / third-party analytics; which platforms give you no data at all.
-   - Platforms and hard limits: package size cap, minimum OS / client version, network access, review rules.
+   - Where the data is: own dashboard / platform console / third-party analytics; which platforms give you no data at all. No numbers at all → add the 4 events in [analytics.md](analytics.md) first, as the first step of the first version.
+   - Platforms and hard limits: package size cap, minimum OS / client version, network access, review rules. Start from [platforms.md](platforms.md), then re-check through its links.
    - How release, promotion and cleanup are done today (record script / doc paths; leave blank if there are none).
 3. Create `project.md` from the sample below, and the other two files from the "ledger header" in [bets.md](bets.md) / [memory.md](memory.md). Show the user before committing.
 4. Add one line to the project's `AGENTS.md` / `CLAUDE.md` (whichever exists): "Iterations and new games follow minigame-loop; project state is in `docs/loop/`."
@@ -123,12 +123,12 @@ The skill holds the method only. Each project keeps its own state in its own rep
 ### 5–6. Release and promotion
 
 - Follow the methods written in `project.md`. Deploying, uploading and posting always wait for the user to say so.
-- Give every promotion channel (each post, each group, each partner) its own source parameter, so settlement can tell what the change did from what the promotion brought in.
+- Give every promotion channel (each post, each group, each partner) its own source parameter (`src` in [analytics.md](analytics.md)), so settlement can tell what the change did from what the promotion brought in.
 
 ### 7. Bets and settlement (details in [bets.md](bets.md))
 
 - A bet = a falsifiable judgment: primary metric, current value, expected value (a range), settlement date, what result proves it wrong, and the basis (which memory entries it cites).
-- Settling = on the date, pull data by the card's definitions, compare line by line, and write "hit / miss / can't tell" with the reason. On a miss, trace which basis was wrong and downgrade or retire that memory entry.
+- Settling = on the date, pull data by the card's definitions, compare line by line, and write "hit / miss / can't tell" with the reason. Compute the verdict with `settle.js`, not in your head. On a miss, trace which basis was wrong and downgrade or retire that memory entry.
 - With incomplete data (dashboard down, retention window not over, too few samples), draw no conclusion: write "can't tell" and push the date. Better not to settle than to settle wrong.
 - Externally (promotion, partners, DMs), only quote numbers that count under your definitions.
 
