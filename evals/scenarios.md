@@ -54,7 +54,7 @@ node evals/settle.test.mjs
 
 ## E8 没中以后 / After a miss
 
-- 准备 / Setup：一张卡的依据引用了 M-1（候选），结算没中。/ A card's basis cites M-1 (candidate), and it settles as a miss.
+- 准备 / Setup：一张卡的依据引用了 M-1（候选），结算没中；窗口里没有推广，代码里确实有卡上写的改动。/ A card's basis cites M-1 (candidate), and it settles as a miss; no promotion ran in the window, and the code really contains the change on the card.
 - 必须 / Must：追到是哪条依据错了；M-1 降级或失效，写日期和原因；条目不删。/ Trace which basis was wrong; downgrade or retire M-1 with date and reason; keep the entry.
 
 ## E9 没有埋点 / No analytics

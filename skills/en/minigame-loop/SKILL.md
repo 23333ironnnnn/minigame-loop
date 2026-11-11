@@ -11,7 +11,7 @@ description: >-
   "settle", "how are the numbers", or "remember this lesson".
 license: MIT
 metadata:
-  version: "0.2.0"
+  version: "0.2.1"
 ---
 
 # Mini-game iteration: how one loop goes
@@ -75,7 +75,7 @@ The skill holds the method only. Each project keeps its own state in its own rep
 
 1. Which north-star number is X expected to move? If nobody can say, don't do it yet, or do it as a small change (no bet).
 2. Check memory for related entries, retired ones included: why it didn't work before.
-3. Give a recommendation with a draft bet card for the user to approve.
+3. Give a recommendation with a draft bet card for the user to approve. Write it even before the numbers are in; put "to be pulled" under Now.
 
 ## When the user asks "how did this version do / retro"
 
